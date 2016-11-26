@@ -194,7 +194,10 @@ print "Number of 3-star reviews after processing: ", len(corpus_3stars_test)
 print "Number of 2-star reviews after processing: ", len(corpus_2stars_test)
 print "Number of 1-star reviews after processing: ", len(corpus_1stars_test)
 
-
+all_5_4_test = np.append(corpus_5stars_test, corpus_4stars_test)
+all_5_4_3_test = np.append(all_5_4_test, corpus_3stars_test)
+all_5_4_3_2_test = np.append(all_5_4_3_test, corpus_2stars_test)
+all_text_test = np.append(all_5_4_3_2_test, corpus_1stars_test)
 
 topic_dist_list = []
 
