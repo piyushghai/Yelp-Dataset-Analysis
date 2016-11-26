@@ -76,9 +76,11 @@ def perform_lda(train, totalTopics):
 # Returns topic_dist for the input corpus, and all_dist, a running sum of all the corpuses
 def getTopicDistMatrix(lda, totalTopics, corpus, all_dist, star):
     topic_dist = [0] * totalTopics
+    # Load the dictionary
     dictionary = corpora.Dictionary.load("restaurant_reviews.dict")
-    for doc in corpus:
-        vec = dictionary.doc2bow(doc.lower().split())
+    # For every reviewDoc in the corpus, compute the prob dist matrix for each term
+    for review in corpus:
+        vec = dictionary.doc2bow(review.lower().split())
         output = lda[vec]
         highest_prob = 0
         highest_topic = 0
@@ -93,7 +95,6 @@ def getTopicDistMatrix(lda, totalTopics, corpus, all_dist, star):
         all_dist.append(temp)
         topic_dist[highest_topic] += 1
     return topic_dist, all_dist
-
 
 
 #Set of English language Stop Words from the dictionary
