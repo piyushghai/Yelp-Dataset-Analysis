@@ -178,7 +178,7 @@ for i in xrange(1, totalTopics+1):
     cols.append("Topic"+ str(i))
 cols.append("Star")
 
-topic_dist_train_1_2_3_4_5_df = pd.DataFrame(topic_dist_list, columns=cols)
+topic_dist_train_all_stars = pd.DataFrame(topic_dist_list, columns=cols)
 
 # Process the test reviews
 corpus_5stars_test = process_reviews(test_stars_5)
@@ -216,15 +216,15 @@ for i in xrange(1, totalTopics+1):
     cols.append("Topic"+ str(i))
 cols.append("Star")
 
-topic_dist_test_1_2_3_4_5_df = pd.DataFrame(topic_dist_list, columns=cols)
+topic_dist_test_all_stars = pd.DataFrame(topic_dist_list, columns=cols)
 
-features = list(topic_dist_train_1_2_3_4_5_df.columns[:totalTopics])
+features = list(topic_dist_train_all_stars.columns[:totalTopics])
 
-x_train = topic_dist_train_1_2_3_4_5_df[features]
-y_train = topic_dist_train_1_2_3_4_5_df['Star']
+x_train = topic_dist_train_all_stars[features]
+y_train = topic_dist_train_all_stars['Star']
 
-x_test = topic_dist_test_1_2_3_4_5_df[features]
-y_test = topic_dist_test_1_2_3_4_5_df['Star'] 
+x_test = topic_dist_test_all_stars[features]
+y_test = topic_dist_test_all_stars['Star'] 
 
 clfs = [KNeighborsClassifier(), MultinomialNB(), LogisticRegression(), RandomForestClassifier(n_estimators=100, n_jobs=2), AdaBoostClassifier(n_estimators=100)]
 clf_names = ['Nearest Neighbors', 'Multinomial Naive Bayes', 'Logistic Regression', 'Random Forest', 'AdaBoost']
