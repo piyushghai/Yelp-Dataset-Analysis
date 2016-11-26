@@ -25,13 +25,79 @@ from sklearn.qda import QDA
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import roc_curve, auc
+from sklearn.cross_validation import train_test_split
 
 plt.rc('figure', figsize=(10,6))
 seaborn.set()
 colors = seaborn.color_palette()
 
-#English Stop Words
-stopwords = set(stopwords.words("english"))
+# Clean all the reviews by removing stop words as well as punctutation marks
+def process_reviews(data_set):
+    clean_data_set = []
+    for text in data_set:
+        # Remove punctuations
+        text = re.sub(r'[^a-zA-Z]', ' ', review)
+        # To lowercase
+        text = review.lower()
+        # Remove stop words
+        texts = [word for word in text.lower().split() if word not in stop_words_set]
+        try:
+            clean_data_set.append(' '.join(texts))
+        except:
+            pass
+    return clean_data_set
+
+# Function to create the LDA model from the training dataset.
+def perform_lda(train, totalTopics):
+    corpus = []
+    for text in train:
+        # Remove punctuations
+        text = re.sub(r'[^a-zA-Z]', ' ', text)
+        # To lowercase
+        text = text.lower()
+        # Remove stop words
+        texts = [word for word in text.lower().split() if word not in stop_words_set]
+        try:
+            corpus.append(texts)
+        except:
+            pass
+
+    # Build dictionary
+    dictionary = corpora.Dictionary(corpus)
+    dictionary.save('restaurant_reviews.dict')
+        
+    # Build vectorized corpus
+    corpus_vector = [dictionary.doc2bow(text) for text in corpus]
+    
+    lda = models.LdaModel(corpus_vector, num_topics=totalTopics, id2word=dictionary)
+    return lda
+
+# Generates a matrix of topic probabilities for each document in matrix
+# Returns topic_dist for the input corpus, and all_dist, a running sum of all the corpuses
+def getTopicDistMatrix(lda, totalTopics, corpus, all_dist, star):
+    topic_dist = [0] * totalTopics
+    dictionary = corpora.Dictionary.load("restaurant_reviews.dict")
+    for doc in corpus:
+        vec = dictionary.doc2bow(doc.lower().split())
+        output = lda[vec]
+        highest_prob = 0
+        highest_topic = 0
+        temp = [0] * totalTopics    # List to keep track of topic distribution for each document
+        for topic in output:
+            this_topic, this_prob = topic
+            temp[this_topic] = this_prob
+            if this_prob > highest_prob:
+                highest_prob = this_prob 
+                highest_topic = this_topic
+        temp.append(star)
+        all_dist.append(temp)
+        topic_dist[highest_topic] += 1
+    return topic_dist, all_dist
+
+
+
+#Set of English language Stop Words from the dictionary
+stop_words_set = set(stopwords.words("english"))
 
 totalTopics = 15
 
@@ -59,9 +125,7 @@ label_star_3 = [3.0]*len(text_star_3)
 label_star_4 = [4.0]*len(text_star_4)
 label_star_5 = [5.0]*len(text_star_5)
 
-# Create test and training dataset. We use 80-20 sampling here
-from sklearn.cross_validation import train_test_split
-
+# Create test and training dataset. We use 80-20 sampling here. We can use 66-33 sampling too
 train_stars_1, test_stars_1, train_labels_stars_1, all_1stars_labels_test = train_test_split(text_star_1, label_star_1, test_size=0.20)
 train_stars_2, test_stars_2, train_labels_stars_2, all_2stars_labels_test = train_test_split(text_star_2, label_star_2, test_size=0.20)
 train_stars_3, test_stars_3, train_labels_stars_3, all_3stars_labels_test = train_test_split(text_star_3, label_star_3, test_size=0.20)
@@ -69,22 +133,6 @@ train_stars_4, test_stars_4, train_labels_stars_4, all_4stars_labels_test = trai
 train_stars_5, test_stars_5, train_labels_stars_5, all_5stars_labels_test = train_test_split(text_star_5, label_star_5, test_size=0.20)
 
 #print(len(train_labels_stars_1))
-
-# Clean all the reviews by removing stop words
-def process_reviews(data_set):
-    clean_data_set = []
-    for text in data_set:
-        # Remove punctuations
-        text = re.sub(r'[^a-zA-Z]', ' ', review)
-        # To lowercase
-        text = review.lower()
-        # Remove stop words
-        texts = [word for word in text.lower().split() if word not in stopwords]
-        try:
-            clean_data_set.append(' '.join(texts))
-        except:
-            pass
-    return clean_data_set
 
 ## Cleaning all the reviews and building corpus out of them
 corpus_5stars = process_reviews(train_stars_5)
@@ -105,57 +153,9 @@ all_5_4_3_train = np.append(all_5_4_train, corpus_3stars)
 all_5_4_3_2_train = np.append(all_5_4_3_train, corpus_2stars)
 all_text_train = np.append(all_5_4_3_2_train, corpus_1stars)
 
-
-# Function to create the LDA model from the training dataset.
-def perform_lda(train, totalTopics):
-    corpus = []
-    for review in train:
-        # Remove punctuations
-        review = re.sub(r'[^a-zA-Z]', ' ', review)
-        # To lowercase
-        review = review.lower()
-        # Remove stop words
-        texts = [word for word in review.lower().split() if word not in stopwords]
-        try:
-            corpus.append(texts)
-        except:
-            pass
-
-    # Build dictionary
-    dictionary = corpora.Dictionary(corpus)
-    dictionary.save('restaurant_reviews.dict')
-        
-    # Build vectorized corpus
-    corpus_2 = [dictionary.doc2bow(text) for text in corpus]
-    #corpora.MmCorpus.serialize('LDA/restaurant_reviews.mm', corpus_2)
-    
-    lda = models.LdaModel(corpus_2, num_topics=totalTopics, id2word=dictionary)
-    return lda
-
 # Building the LDA model
 %time lda = perform_lda(all_text_train, totalTopics)
 
-# Generates a matrix of topic probabilities for each document in matrix
-# Returns topic_dist for the input corpus, and all_dist, a running sum of all the corpuses
-def generate_topic_dist_matrix(lda, totalTopics, corpus, all_dist, star):
-    topic_dist = [0] * totalTopics
-    dictionary = corpora.Dictionary.load("restaurant_reviews.dict")
-    for doc in corpus:
-        vec = dictionary.doc2bow(doc.lower().split())
-        output = lda[vec]
-        highest_prob = 0
-        highest_topic = 0
-        temp = [0] * totalTopics    # List to keep track of topic distribution for each document
-        for topic in output:
-            this_topic, this_prob = topic
-            temp[this_topic] = this_prob
-            if this_prob > highest_prob:
-                highest_prob = this_prob 
-                highest_topic = this_topic
-        temp.append(star)
-        all_dist.append(temp)
-        topic_dist[highest_topic] += 1
-    return topic_dist, all_dist
 
 topic_dist_list = []
 
@@ -167,11 +167,11 @@ topic_dist_2stars = []
 topic_dist_1stars = []
 
 
-topic_dist_5stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_5stars, topic_dist_list, 5)
-topic_dist_4stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_4stars, topic_dist_list, 4)
-topic_dist_3stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_3stars, topic_dist_list, 3)
-topic_dist_2stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_2stars, topic_dist_list, 2)
-topic_dist_1stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_1stars, topic_dist_list, 1)
+topic_dist_5stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_5stars, topic_dist_list, 5)
+topic_dist_4stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_4stars, topic_dist_list, 4)
+topic_dist_3stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_3stars, topic_dist_list, 3)
+topic_dist_2stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_2stars, topic_dist_list, 2)
+topic_dist_1stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_1stars, topic_dist_list, 1)
 
 cols = []
 for i in xrange(1, totalTopics+1):
@@ -205,11 +205,11 @@ topic_dist_2stars = []
 topic_dist_1stars = []
 
 
-topic_dist_5stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_5stars_test, topic_dist_list, 5)
-topic_dist_4stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_4stars_test, topic_dist_list, 4)
-topic_dist_3stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_3stars_test, topic_dist_list, 3)
-topic_dist_2stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_2stars_test, topic_dist_list, 2)
-topic_dist_1stars, topic_dist_list = generate_topic_dist_matrix(lda, totalTopics, corpus_1stars_test, topic_dist_list, 1)
+topic_dist_5stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_5stars_test, topic_dist_list, 5)
+topic_dist_4stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_4stars_test, topic_dist_list, 4)
+topic_dist_3stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_3stars_test, topic_dist_list, 3)
+topic_dist_2stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_2stars_test, topic_dist_list, 2)
+topic_dist_1stars, topic_dist_list = getTopicDistMatrix(lda, totalTopics, corpus_1stars_test, topic_dist_list, 1)
 
 cols = []
 for i in xrange(1, totalTopics+1):
@@ -266,5 +266,3 @@ for model, val in LDAResults.iteritems():
     print 'The confusion matrix for this classifier is  \n' + str(val['clf_matrix'])
     print '\nHere is the classification report:'
     print val['clf_report']
-
-
