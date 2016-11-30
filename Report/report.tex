@@ -203,6 +203,9 @@ Next we observed the variation of average rating stars against the \textit{lengt
 
 Next we observed the distribution of reviews with the star rating, i.e. what review was given which star by a user. From Figure \ref{star_distribution}, we can see that there is a skewed distribution of reviews in terms of star ratings they have received. A majority of reviews have a 5 star rating, while the count for 2 star is the lowest. This will later on form a basis for us to create training datasets based on data sampled from each star rating, in order to ensure even representation in the training corpus.
 
+\subsection{Word Cloud}
+Given the distribution of reviews, we decided to capture the common sentiment for all the reviews individually. We did this by plotting a wordcloud of review texts grouped by their star rating. To do this, we preprocessed the review texts to remove all the common stop  words, tokenized the words and then plotted them. Figures \ref{wc1}, \ref{wc2}, \ref{wc3}, \ref{wc4}, \ref{wc5} represent this pictorially.
+
 \begin{table}[!htb]
  \centering
  \caption{Categories and sub categories a review belongs to in the Yelp business dataset}
@@ -271,6 +274,42 @@ EDH & 30003 \\
 \caption{Length of a review v/s count of reviews}
 \label{star_distribution}
 \end{figure} 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{1_star_wordcloud_500k.png}
+\caption{Word Cloud for 1 star rating reviews}
+\label{wc1}
+\end{figure} 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{2_star_wordcloud_500k.png}
+\caption{Word Cloud for 2 star rating reviews}
+\label{wc2}
+\end{figure} 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{3_star_wordcloud_500k.png}
+\caption{Word Cloud for 3 star rating reviews}
+\label{wc3}
+\end{figure} 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{4_star_wordcloud_500k.png}
+\caption{Word Cloud for 4 star rating reviews}
+\label{wc4}
+\end{figure} 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{5_star_wordcloud_500k.png}
+\caption{Word Cloud for 5 star rating reviews}
+\label{wc5}
+\end{figure} 
+
 
 \section{Program Description}
 The code has been broken down into the following parts : 
