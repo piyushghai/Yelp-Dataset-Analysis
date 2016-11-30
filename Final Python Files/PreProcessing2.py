@@ -138,5 +138,3 @@ pickle.dump(corpus_4stars_test, open("corpus_4stars_test.p", "wb"))
 pickle.dump(corpus_3stars_test, open("corpus_3stars_test.p", "wb"))
 pickle.dump(corpus_2stars_test, open("corpus_2stars_test.p", "wb"))
 pickle.dump(corpus_1stars_test, open("corpus_1stars_test.p", "wb"))
-
-pickle.dump(resto_review_starGrouping, open("resto_review_starGrouping.p", "wb"))
