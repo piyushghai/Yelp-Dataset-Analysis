@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 00:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 01:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -500,14 +500,14 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              from within a non compatible caller, that does not
 (scrartcl)              \scr@s@ct@@nn@m@ locally.
 (scrartcl)              This could result in several error messages on input li
-ne 237.
+ne 239.
 
 [5] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 7590 strings out of 493014
- 114203 string characters out of 6133351
- 444396 words of memory out of 5000000
- 11001 multiletter control sequences out of 15000+600000
+ 7591 strings out of 493014
+ 114208 string characters out of 6133351
+ 444400 words of memory out of 5000000
+ 11002 multiletter control sequences out of 15000+600000
  22029 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  47i,12n,51p,8485b,1620s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -523,7 +523,7 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (5 pages, 216122 bytes).
+Output written on report.pdf (5 pages, 220516 bytes).
 PDF statistics:
  65 PDF objects out of 1000 (max. 8388607)
  46 compressed objects within 1 object stream
