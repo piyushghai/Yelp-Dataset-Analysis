@@ -220,7 +220,14 @@ We implemented a total of 8 models and each model has been separated into a diff
 \end{enumerate}
 
 \section{Model Description}
-The following models were implemented and evaluated:
+We built several models which generated different forms of features of review text to help predict the sentiment:
+
+\begin{figure}
+\centering
+\includegraphics[width=400px, height = 300px]{Models.png}
+\caption{Flow chart showing the models in the workflow}
+\label{models_diag}
+\end{figure} 
 
 \begin{enumerate}
 
@@ -280,6 +287,15 @@ len(resto_review)
 }
 \end{lstlisting}
 \subsection{Cleaning}
+
+\begin{figure}
+\centering
+\includegraphics[width=300px, height = 250px]{DataPreprocessFlow.png}
+\caption{Data Cleanup Flow}
+\label{cleanup_diag}
+\end{figure} 
+
+
 Since we are dealing with real world text reviews, the data available to us will contain plenty of punctation words as well common English stopwords. We followed a standard process for text mining to further cleanse and process the review dataset. In this, we first converted all the reviews to \textbf{lowercase}. We then removed \textbf{numbers} \& \textbf{punctuations}. After this, we \textbf{tokenized} the text using the NLTK library's tokenizer. Post this, we removed the \textbf{stopwords} and we also performed \textbf{stemming} of the words. The cleaned dataset was thus used as an input to all our models trained.
 \subsection{Creating Training and Testing Corpus}
 We used \textbf{70-30} sampling to create a training and testing corpus from the cleaned text reviews. In order to ensure sufficient representation of all the star label values in our training corpus, we split the \textbf{original corpus on the basis of the star labels}, thus creating 5 corpora, one for each star label. The 70-30 sampling was then carried out on each of the 5 corpora and the training and test files thus created were then combined to create one big training and testing corpus. The number of reviews in training corpus for each star label is given  in Table \ref{corpus_size}.
