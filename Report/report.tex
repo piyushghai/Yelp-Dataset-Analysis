@@ -72,6 +72,37 @@
 }
 
 
+\lstdefinelanguage{python}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+
+
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
 \fancyfoot[L]{} % Empty left footer
@@ -120,7 +151,7 @@
 The Yelp dataset downloaded from Yelp dataset challenge website is huge and consists of over 2.7M reviews by roughly 687k users for over 86k businesses \cite{yelp_dataset_challenge}. For this project, we chose to predict a review's rating based on the review text. The rating will be done on a scale of 1-5, where 1 stands for awful and 5 stands for excellent. We built multiple models and accessed which models would fit our use case the best. This is explained in more depth in the later sections of this report.
 
 \subsection{About the dataset}
-The Yelp Dataset consists of several files in JSON format of the data. The main files as per our use-case were the \textit{yelp\_academic\_dataset\_business.json} \& \textit{yelp\_academic\_dataset\_review.json}. The data representation in the for acadmic\_dataset\_business is as follows : \\
+The Yelp Dataset consists of several files in JSON format of the data. The main files as per our use-case were the \textit{yelp\_academic\_dataset\_business.json} \& \textit{yelp\_academic\_dataset\_review.json}. The two data files were \textbf{2.13 GB} \& \textbf{73.6MB} in size respectively. The data representation in the for acadmic\_dataset\_business is as follows : \\
 \begin{lstlisting}[language=json]
 {
     "type": "business",
@@ -150,8 +181,7 @@ The Yelp Dataset consists of several files in JSON format of the data. The main 
 \end{lstlisting}
 The data representation in the for acadmic\_dataset\_review is as follows : \\
 \begin{lstlisting}[language=json]
-{
-  	"type": "review",
+{   "type": "review",
     "business_id": (encrypted business id),
     "user_id": (encrypted user id),
     "stars": (star rating, rounded to half-stars),
@@ -162,12 +192,56 @@ The data representation in the for acadmic\_dataset\_review is as follows : \\
 \end{lstlisting}
 The given datasets were first converted and exported into csv formats using a simple python script. The python script is a part of the \textbf{PreProcessing1.py} python file.
 
+%% TODO Insert more sections here
+
+\section{Coding Contribution}
+\subsection{Data Transformation \ Pre-Processing}
+Since the files were in JSON format, they were first converted to CSV format. After converting to CSV format. After converting to CSV format, the business and review data frames were joined on \textit{business\_id} for restaurant establishments. From the combined dataset, we got over 1.6M reviews for restaurants alone. The dataset now consisted of just two columns : \textit{Review Text} \& \textit{Star Rating}. \\
+\begin{lstlisting}[language=python]
+{
+  	len(resto_review_data)
+  	1630712
+}
+\end{lstlisting}
+The length of reviews was tweaked based on our observations from Exploratory Dataset Analysis. Since a very small review might not contribute meaningfully to our models, we decided to limit the minimum characters in a review to 50, while the maximum character limit was fixed to 500 (this was kept low, because at higher ranges, the dataset was still too huge and required more computing power to run than was possible on our MacBooks).
+This further reduced the number of records to a little over 900k. \\
+\begin{lstlisting}[language=python]
+{
+  	resto_review = reduceReviewBasedOnLength(resto_review_data= resto_review_data, minReviewLen=50, maxReviewLen=500)
+len(resto_review)
+  	910340
+}
+\end{lstlisting}
+\subsection{Cleaning}
+Since we are dealing with real world text reviews, the data available to us will contain plenty of punctation words as well common English stopwords. We followed a standard process for text mining to further cleanse and process the review dataset. In this, we first converted all the reviews to \textbf{lowercase}. We then removed \textbf{numbers} \& \textbf{punctuations}. After this, we \textbf{tokenized} the text using the NLTK library's tokenizer. Post this, we removed the \textbf{stopwords} and we also performed \textbf{stemming} of the words. The cleaned dataset was thus used as an input to all our models trained.
+\subsection{Creating Training and Testing Corpus}
+We used \textbf{70-30} sampling to create a training and testing corpus from the cleaned text reviews. In order to ensure sufficient representation of all the star label values in our training corpus, we split the \textbf{original corpus on the basis of the star labels}, thus creating 5 corpora, one for each star label. The 70-30 sampling was then carried out on each of the 5 corpora and the training and test files thus created were then combined to create one big training and testing corpus. The number of reviews in training corpus for each star label is given  in Table \ref{corpus_size}.
+\begin{table}[!htb]
+ \centering
+ \caption{Star rating distribution in the training corpora}
+ \label{corpus_size}
+ \begin{tabular}{l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Dataset & Count \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Rating 1 &58739\\
+    Rating 2 &47154\\
+    Rating 3 &72107\\
+    Rating 4 &174334\\
+    Rating 5 &284902\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
 \newpage
 \begin{thebibliography}{}
  \bibitem{yelp}
  ggplot Library is used in this assignment to plot most of the graphs in this assgnment \url{http://ggplot2.org/}. 
  
  \bibitem{yelp_dataset_challenge}
+ ggplot Library is used in this assignment to plot most of the graphs in this assgnment \url{http://ggplot2.org/}. 
+ 
+  \bibitem{nltk}
  ggplot Library is used in this assignment to plot most of the graphs in this assgnment \url{http://ggplot2.org/}. 
   
 \end{thebibliography}
