@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  29 NOV 2016 23:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  29 NOV 2016 23:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -314,6 +314,32 @@ Package: authblk 2001/02/27 1.3 (PWD)
 \c@authors=\count113
 \c@affil=\count114
 )
+(/usr/local/texlive/2016/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifvtex.sty
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count115
+\Gm@cntv=\count116
+\c@Gm@tempcnt=\count117
+\Gm@bindingoffset=\dimen119
+\Gm@wd@mp=\dimen120
+\Gm@odd@mp=\dimen121
+\Gm@even@mp=\dimen122
+\Gm@layoutwidth=\dimen123
+\Gm@layoutheight=\dimen124
+\Gm@layouthoffset=\dimen125
+\Gm@layoutvoffset=\dimen126
+\Gm@dimlist=\toks29
+)
 (./report.aux)
 \openout1 = `report.aux'.
 
@@ -332,17 +358,17 @@ LaTeX Font Info:    ... okay on input line 110.
 
 (/usr/local/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count115
-\scratchdimen=\dimen119
+\scratchcounter=\count118
+\scratchdimen=\dimen127
 \scratchbox=\box34
-\nofMPsegments=\count116
-\nofMParguments=\count117
-\everyMPshowfont=\toks29
-\MPscratchCnt=\count118
-\MPscratchDim=\dimen120
-\MPnumerator=\count119
-\makeMPintoPDFobject=\count120
-\everyMPtoPDFconversion=\toks30
+\nofMPsegments=\count119
+\nofMParguments=\count120
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen128
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
+\everyMPtoPDFconversion=\toks31
 ) (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -350,9 +376,6 @@ Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 (/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -390,9 +413,43 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count121
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 111.
+\c@lstlisting=\count124
 
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(64.32025pt, 468.86743pt, 64.32025pt)
+* v-part:(T,H,B)=(64.32025pt, 716.40643pt, 64.32025pt)
+* \paperwidth=597.50793pt
+* \paperheight=845.04694pt
+* \textwidth=468.86743pt
+* \textheight=716.40643pt
+* \oddsidemargin=-7.94974pt
+* \evensidemargin=-7.94974pt
+* \topmargin=-41.94975pt
+* \headheight=13.6pt
+* \headsep=20.40001pt
+* \topskip=11.0pt
+* \footskip=47.6pt
+* \marginparwidth=59.7508pt
+* \marginparsep=12.8401pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 111.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -400,24 +457,8 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 
 {/usr/local/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `yelp_dataset_challenge' on page 2 undefined on input 
-line 118.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 118--119
 
- []
-
-
-LaTeX Warning: Reference `yelp_dataset_challenge' on page 2 undefined on input 
-line 120.
-
-
-Overfull \hbox (71.12712pt too wide) in paragraph at lines 123--124
-\T1/cmr/m/n/10.95 per our use-case were the \T1/cmr/m/it/10.95 yelp_academic_da
-taset_business.json \T1/cmr/m/n/10.95 & \T1/cmr/m/it/10.95 yelp_academic_datase
-t_review.json\T1/cmr/m/n/10.95 .
  []
 
 
@@ -429,12 +470,12 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 124.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [2]
+)
 Underfull \hbox (badness 10000) in paragraph at lines 151--152
 
  []
 
-[3]
+[2] [3]
 
 Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              You've used the KOMA-Script implementation of \@ssect
@@ -452,32 +493,28 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 168.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [4]
-(./report.aux)
-
-LaTeX Warning: There were undefined references.
-
- ) 
+(./report.aux) ) 
 Here is how much of TeX's memory you used:
- 7091 strings out of 493014
- 106759 string characters out of 6133351
- 417688 words of memory out of 5000000
- 10512 multiletter control sequences out of 15000+600000
+ 7579 strings out of 493014
+ 114074 string characters out of 6133351
+ 443848 words of memory out of 5000000
+ 10990 multiletter control sequences out of 15000+600000
  22029 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 47i,12n,51p,8485b,1615s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1095.pfb></us
-r/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1200.pfb></usr/
-local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1440.pfb></usr/lo
-cal/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.pfb></usr/loca
-l/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/local/
-texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb></usr/local/te
-xlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></usr/local/texl
-ive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></usr/local/texliv
-e/2016/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/local/texlive/
-2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (4 pages, 200107 bytes).
+ 47i,12n,51p,8485b,1620s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm
+-super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/s
+fbx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfc
+c1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc1
+200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc144
+0.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0800.
+pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pf
+b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1440.pfb>
+</usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb></
+usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></us
+r/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></usr/
+local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on report.pdf (4 pages, 200269 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  44 compressed objects within 1 object stream
