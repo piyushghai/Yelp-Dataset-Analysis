@@ -218,6 +218,45 @@ We implemented a total of 8 models and each model has been separated into a diff
 \end{itemize}
 \end{enumerate}
 
+\section{Model Description}
+The following models were implemented and evaluated:
+
+\begin{enumerate}
+
+\item Baseline model\\
+In the baseline model, the average rating across all reviews is assigned as the predicted rating for each review. The average rating of all reviews was found to be 3.9 which was rounded off to 4 and used as baseline prediction.
+
+\item TFIDF model\\
+In TFIDF or term frequency-inverse document frequency, each review text is represented as a vector having dimension equal to the number of words in the dictionary and each dimension representing a weight of importance of the word in the review text. This TFIDF vector representations of the review corpus become the features to the classification model.
+
+\item Bag of words model\\
+In the bag of words or the unigram model, the review texts are converted to term frequency vectors, where each dimension represents the count of the term in the review text. The term frequency representations of the entire corpus become the features to the classification model.
+
+\item Bigram model\\
+In the Bigram model, the review text is broken down into bigrams - set of two words occurring consecutively in the text and the document is then represented as the term frequency vector of these bigrams. Each dimension of the term frequency vector represents the count of the bigram in the review text. 
+
+\item Trigam model\\
+In the Trigram model, the review text is broken down into trigrams - set of three words occurring consecutively. The term frequency vectors of these sets become the features of the review text where each dimension represents the count of the trigram in the review text.
+
+\item Bi and Tri-gram model\\
+In the Bi and Tri-gram mode, the review text is broken down into both bi and tri-grams. The term frequency vectors of these sets become the features of a review text where each dimension represents the count of the bigram or trigram in the review text.
+
+\item LDA model\\
+All the previous models consider all the words/bigrams/trigrams and their frequency as the training features. In the case where the corpus is huge, the dimensionality of the input features would be huge. To reduce the dimensions, we have used the Latent Dirichlet allocation (LDA) algorithm which discovers a given number of topics or themes in the corpus. Each review text is then represented as vector of probability distribution across these topics. These topic distribution vectors become the features to the classification model.
+
+We have used the genism package in python to create the LDA model:
+%ldamodel = gensim.models.ldamodel.LdaModel(corpus, num_topics=15, id2word = dictionary)
+
+Parameters:\\
+\begin{itemize}
+\item num\_topics:  The number of topics that should be discovered.
+\item id2word: The dictionary created from the corpus
+\end{itemize}
+
+\item LDA model + Sentiment Layer
+In this model, sentiment of the review was fed in as the feature alongside the topic distribution of the review. The sentiment of the review was extracted using the Naïve Bayes classifier. 
+\end{enumerate}
+
 \section{Coding Contribution}
 \subsection{Data Transformation \ Pre-Processing}
 Since the files were in JSON format, they were first converted to CSV format. After converting to CSV format. After converting to CSV format, the business and review data frames were joined on \textit{business\_id} for restaurant establishments. From the combined dataset, we got over 1.6M reviews for restaurants alone. The dataset now consisted of just two columns : \textit{Review Text} \& \textit{Star Rating}. \\
