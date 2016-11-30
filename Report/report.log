@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 01:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 01:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -493,40 +493,50 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 223.
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [3] [4]
+) [3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 243.
+
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 243.
+ [4] [5]
 
 Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              You've used the KOMA-Script implementation of \@ssect
 (scrartcl)              from within a non compatible caller, that does not
 (scrartcl)              \scr@s@ct@@nn@m@ locally.
 (scrartcl)              This could result in several error messages on input li
-ne 239.
+ne 261.
 
-[5] (./report.aux) ) 
+[6] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 7591 strings out of 493014
- 114208 string characters out of 6133351
+ 7611 strings out of 493014
+ 114561 string characters out of 6133351
  444400 words of memory out of 5000000
- 11002 multiletter control sequences out of 15000+600000
+ 11019 multiletter control sequences out of 15000+600000
  22029 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  47i,12n,51p,8485b,1620s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/cm-supe
-r/cm-super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-sup
-er/sfbx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super
-/sfcc1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/s
-fcc1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfc
-c1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm0
-800.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm109
-5.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1440.
-pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pf
-b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
-</usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></
-usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (5 pages, 220516 bytes).
+r/cm-super-t1.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-supe
+r/sfbx1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/
+sfcc1095.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sf
+cc1200.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfcc
+1440.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm08
+00.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1095
+.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm1440.p
+fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb
+></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><
+/usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></u
+sr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
+Output written on report.pdf (6 pages, 229616 bytes).
 PDF statistics:
- 65 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 72 PDF objects out of 1000 (max. 8388607)
+ 51 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -235,6 +235,28 @@ We used \textbf{70-30} sampling to create a training and testing corpus from the
 \subsection{LDA Model Development}
 The LDA\cite{lda} model is present in \textbf{gensim package} in python. The inbuilt library method was not so straightforward and required a \textbf{vectorized bag of words} corpus as an input. It also required a dictionary developed from the available training corpora. The parameters that could be tweaked while developing the model were the corpora size and the total number of topics we want to extract. We chose the \textbf{total topics as 7}. In a normal vectorized corpus, the dimensionality would have been the entire size of the disctionary, which is very huge. Selecting the total topics essentially will reduce the dimensionality of our training corpora to merely 7 selected topics. The topic probability distribution dataset was used as a feature to create new training corpora which was used to train off the shelf classifiers such as \textit{MultinomialNaiveBayes, LogisticRegression, RandomForestClassifier, AdaBoostClassifier}. The performance of the models is discussed in a separate section on Model Evaluation.
 
+\subsection{Contributions from team members}
+All team members had equal contributions to this assignment. (33\% each). The key contributions are as follows : 
+\begin{enumerate}
+   \item Karan Grover.
+   \begin{itemize}
+     \item Performed the conversion of json to csv.
+     \item Suggested the merger of business and reviews file into one.
+     \item Performed the cleaning and pre-processing of the dataset.
+   \end{itemize}
+   \item Pragya Arora
+   \begin{itemize}
+   \item Performed the exploratory analysis of the dataset, and suggested using a limit size range of reviews.
+   \item Suggested and worked on Bi-Grams, Tri Grams \& Bag of Words approach.
+   \item Jointly contributed with Piyush in TF-IDF Vectorized model.
+   \end{itemize}
+   \item Piyush Ghai
+   \begin{itemize}
+   \item Suggested to keep the representation of all star labels same in the training and testing split.
+   \item Suggested and worked on LDA \& LDA + Sentiment Analysis approaches for classification.
+   \end{itemize}
+\end{enumerate}
+
 \newpage
 \begin{thebibliography}{}
  \bibitem{yelp}
