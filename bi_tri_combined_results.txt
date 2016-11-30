@@ -1,0 +1,22 @@
+MODEL: Trigram Multinomial Naive Bayes
+
+Precision: 0.584915366361
+Recall: 0.614550607465
+F1: 0.573366021392
+Accuracy: 0.614550607465
+
+Classification Report:
+             precision    recall  f1-score   support
+
+     1 star       0.74      0.68      0.71     25392
+     2 star       0.53      0.09      0.15     20208
+     3 star       0.44      0.17      0.24     30929
+     4 star       0.44      0.42      0.43     74610
+     5 star       0.68      0.92      0.78    121963
+
+avg / total       0.58      0.61      0.57    273102
+
+
+Precision variance: 0.075914
+
+Recall variance: 0.485189
