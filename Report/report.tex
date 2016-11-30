@@ -36,7 +36,7 @@
 
 \usepackage{listings}
 \usepackage{xcolor}
-
+\usepackage[section]{placeins}
 \colorlet{punct}{red!60!black}
 \definecolor{background}{HTML}{EEEEEE}
 \definecolor{delim}{RGB}{20,105,176}
@@ -193,10 +193,87 @@ The data representation in the for acadmic\_dataset\_review is as follows : \\
 The given datasets were first converted and exported into csv formats using a simple python script. The python script is a part of the \textbf{PreProcessing1.py} python file.
 
 %% TODO Insert more sections here
-\section{Exploratory Analysis of Yelp's Dataset}
+\section{Exploratory Analysis of Yelp Dataset}
+The primary features of interest to us in the given dataset are \textbf{reviews} by the user, the \textbf{stars} associated with a review and the business establishment the reviews belong to. After merging the business dataset and the review dataset, we analysed which business unit the maximum reviews belonged to. Table \ref{review_cat_table} lists out randomly sampled 10 rows from the dataset. In figure \ref{category_reviews}, the x-axis was chosen as numeric in order to display a cleaner graph, but the sharp spike corresponds to \textit{restaurant} as the main category. The total review count is close to 1.6M for this category.
+Next we thought of finding the geographical split of the reviews. The Yelp dataset consists of data collected from \textit{29} different states. Table \ref{state_review} shows the split of review count over all business establishments sorted by the top 7 states. 
+As we can see, the maximum reviews come from Nevada, followed by Arizona, both of which are over 1M in number. After Arizona, the next highest is North Carolina, which is nearly one-tenth lesser than that of Arizona. This could perhaps be indicative of a very strong presence of Yelp in business establishments in NV and AZ as opposed to other states.\\
+
+Since there are so many reviews for restaurant, we decided to focus on the subset of reviews for restaurants ( the subset is obtained in the pre-processing step) for further analysis.  
+Next we observed the variation of average rating stars against the \textit{length of the reviews (in characters)}. The average rating varies quite a lot for reviews with higher number of characters, indicating that the polarity of reviews fluctuates a lot more from one length to another. There is less fluctation in the average rating of reviews from length ~50 to ~500 characters. Hence we chose to subset the reviews based on minimum and maximum length threshholds. Figure \ref{average_length} indicates this observed trend. Another motive for reducing the subset for reviews is based from inferences drawn from Figure \ref{length_count}. From this we can see that the total number of length >700 is very less as compared to the overall size of the review corpus. Thus combining the analysis from this and the previous figure, we subsetted the number of reviews.\\
+
+Next we observed the distribution of reviews with the star rating, i.e. what review was given which star by a user. From Figure \ref{star_distribution}, we can see that there is a skewed distribution of reviews in terms of star ratings they have received. A majority of reviews have a 5 star rating, while the count for 2 star is the lowest. This will later on form a basis for us to create training datasets based on data sampled from each star rating, in order to ensure even representation in the training corpus.
+
+\begin{table}[!htb]
+ \centering
+ \caption{Categories and sub categories a review belongs to in the Yelp business dataset}
+ \label{review_cat_table}
+ \begin{tabular}{l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    ReviewId & Categories \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+	QPTBica7UkkrT7xEQskBww & [Nightlife, Bars, American (Traditional)] \\
+O93XUShpjG7X\_VioaN0ViQ & [Local Services, Mobile Phone Repair] \\
+5zvonAPvVG17Aid1MZYFGw & [Food, Coffee \& Tea] \\
+UrA\_eN4seEdDLZR-gIrG4g & [Skin Care, Weight Loss Centers] \\
+vZSNSfzb7XDMpBXr\_PEX1w & [Music Venues, Arts \& Entertainment] \\
+CEO6MmROql9ZFHKTQ1FXow  & [Bars, American (Traditional), Food] \\
+lH-jQdLKKGcG-3DzgMgLQA & [Thai, Restaurants] \\
+ctbEMtUouLPzf2F25DQamw & [Tires, Automotive] \\
+iESG5qEoUNYJ4lOOv0337g & [Burgers, American (New), Restaurants] \\
+w0LtO11Ylu-7wnzKs1E9QA & [Sushi Bars, Asian Fusion, Restaurants] \\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=300px, height = 250px]{category_reviews.png}
+\caption{Review count v/s category they belong to}
+\label{category_reviews}
+\end{figure} 
+
+\begin{table}[!htb]
+ \centering
+ \caption{Review counts for different states}
+ \label{state_review}
+ \begin{tabular}{l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    State & Total Reviews \\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+NV & 1154799 \\
+AZ & 1029103 \\
+NC & 165625 \\
+PA & 111542 \\
+QC & 88046 \\
+WI & 69917 \\
+EDH & 30003 \\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{avg_count.png}
+\caption{Review count v/s category they belong to}
+\label{average_length}
+\end{figure} 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{len_count.png}
+\caption{Length of a review v/s count of reviews}
+\label{length_count}
+\end{figure} 
+
+\begin{figure}[!htb]
+\centering
+\includegraphics[width=250px, height = 200px]{star_review_count.png}
+\caption{Length of a review v/s count of reviews}
+\label{star_distribution}
+\end{figure} 
 
 \section{Program Description}
-The code has been broken down into the following parts:
+The code has been broken down into the following parts : 
 
 \begin{enumerate}
 \item \textbf{Pre-Processing 1}\\
@@ -387,8 +464,6 @@ In this model, sentiment of the review was fed in as the feature alongside the t
   \end{tabular} 
 \end{table}  
 
-
-
 \section{Coding Contribution}
 \subsection{Data Transformation \ Pre-Processing}
 Since the files were in JSON format, they were first converted to CSV format. After converting to CSV format. After converting to CSV format, the business and review data frames were joined on \textit{business\_id} for restaurant establishments. From the combined dataset, we got over 1.6M reviews for restaurants alone. The dataset now consisted of just two columns : \textit{Review Text} \& \textit{Star Rating}. \\
@@ -415,7 +490,6 @@ len(resto_review)
 \caption{Data Cleanup Flow}
 \label{cleanup_diag}
 \end{figure} 
-
 
 Since we are dealing with real world text reviews, the data available to us will contain plenty of punctation words as well common English stopwords. We followed a standard process for text mining to further cleanse and process the review dataset. In this, we first converted all the reviews to \textbf{lowercase}. We then removed \textbf{numbers} \& \textbf{punctuations}. After this, we \textbf{tokenized} the text using the NLTK library's tokenizer. Post this, we removed the \textbf{stopwords} and we also performed \textbf{stemming} of the words. The cleaned dataset was thus used as an input to all our models trained.
 \subsection{Creating Training and Testing Corpus}
@@ -491,6 +565,4 @@ NLTK is a leading platform for building Python programs to work with human langu
 In natural language processing, latent Dirichlet allocation (LDA) is a generative statistical model that allows sets of observations to be explained by unobserved groups that explain why some parts of the data are similar. For example, if observations are words collected into documents, it posits that each document is a mixture of a small number of topics and that each word's creation is attributable to one of the document's topics \url{https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation}. 
   
 \end{thebibliography}
-
-
 \end{document}
