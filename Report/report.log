@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 01:40
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 01:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -509,7 +509,7 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              from within a non compatible caller, that does not
 (scrartcl)              \scr@s@ct@@nn@m@ locally.
 (scrartcl)              This could result in several error messages on input li
-ne 277.
+ne 276.
 
 [6] (./report.aux) ) 
 Here is how much of TeX's memory you used:
@@ -533,7 +533,7 @@ fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pfb
 ></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb><
 /usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></u
 sr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (6 pages, 231059 bytes).
+Output written on report.pdf (6 pages, 231283 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
