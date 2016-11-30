@@ -18,7 +18,7 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 10pt font size
 
 \usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
 %\usepackage{fourier} % Use the Adobe Utopia font for the document - comment this line to return to the LaTeX default
@@ -32,6 +32,46 @@
 \usepackage{url}
 
 \usepackage{fancyhdr} % Custom headers and footers
+
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinelanguage{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+
 \pagestyle{fancyplain} % Makes all pages in the document conform to the custom headers and footers
 \fancyhead{} % No page header - if you want one, create it in the same way as the footers below
 \fancyfoot[L]{} % Empty left footer
@@ -41,7 +81,7 @@
 \renewcommand{\footrulewidth}{0pt} % Remove footer underlines
 \setlength{\headheight}{13.6pt} % Customize the height of the header
 \usepackage{authblk}
-
+\usepackage[margin=0.89in]{geometry}
 \numberwithin{equation}{section} % Number equations within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
 \numberwithin{figure}{section} % Number figures within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
 \numberwithin{table}{section} % Number tables within sections (i.e. 1.1, 1.2, 2.1, 2.2 instead of 1, 2, 3, 4)
@@ -58,7 +98,7 @@
 \normalfont \normalsize 
 \textsc{The Ohio State University, Department of Computer Science and Engineering} \\ [25pt] % Your university, school and/or department name(s)
 \horrule{0.5pt} \\[0.4cm] % Thin top horizontal rule
-\huge Homework 6: kNN Classification of Income \& Iris Dataset \\ % The assignment title
+\huge Homework 6: Prediction of rating from Yelp review text % The assignment title
 \horrule{2pt} \\[0.5cm] % Thick bottom horizontal rule
 }
 
@@ -68,33 +108,68 @@
 \date{\normalsize\today} % Today's date or a custom date
 
 \begin{document}
-
 \maketitle % Print the title
 \newpage
 %----------------------------------------------------------------------------------------
 %	PROBLEM 1
 %----------------------------------------------------------------------------------------
-\section{Preprocessing Steps for training and test data}
+\section{Problem Statement}
+\subsection{About Yelp}
+\textbf{Yelp} \cite{yelp} a famous website as well as a mobile app which publishes crowd sourced reviews about food joints and businesses. It also has a division which handles online reservations for restaurants. \textbf{Yelp Dataset Challenge}\cite{yelp_dataset_challenge} is a publicly open contest sponsored by Yelp, in which the participants are challenged to use Yelp's data in an innovative way. \\
+\subsection{Our Mission}
+The Yelp dataset downloaded from Yelp dataset challenge website is huge and consists of over 2.7M reviews by roughly 687k users for over 86k businesses \cite{yelp_dataset_challenge}. For this project, we chose to predict a review's rating based on the review text. The rating will be done on a scale of 1-5, where 1 stands for awful and 5 stands for excellent. We built multiple models and accessed which models would fit our use case the best. This is explained in more depth in the later sections of this report.
 
+\subsection{About the dataset}
+The Yelp Dataset consists of several files in JSON format of the data. The main files as per our use-case were the \textit{yelp\_academic\_dataset\_business.json} \& \textit{yelp\_academic\_dataset\_review.json}. The data representation in the for acadmic\_dataset\_business is as follows : \\
+\begin{lstlisting}[language=json]
+{
+    "type": "business",
+    "business_id": (encrypted business id),
+    "name": (business name),
+    "neighborhoods": [(hood names)],
+    "full_address": (localized address),
+    "city": (city),
+    "state": (state),
+    "latitude": latitude,
+    "longitude": longitude,
+    "stars": (star rating, rounded to half-stars),
+    "review_count": review count,
+    "categories": [(localized category names)]
+    "open": True / False (corresponds to closed, not business hours),
+    "hours": {
+        (day_of_week): {
+            "open": (HH:MM),
+            "close": (HH:MM)
+        },
+        ...
+    },
+    "attributes": {
+        (attribute_name): (attribute_value),
+    },
+}
+\end{lstlisting}
+The data representation in the for acadmic\_dataset\_review is as follows : \\
+\begin{lstlisting}[language=json]
+{
+  	"type": "review",
+    "business_id": (encrypted business id),
+    "user_id": (encrypted user id),
+    "stars": (star rating, rounded to half-stars),
+    "text": (review text),
+    "date": (date, formatted like "2012-03-14"),
+    "votes": {(vote type): (count)},
+}
+\end{lstlisting}
+The given datasets were first converted and exported into csv formats using a simple python script. The python script is a part of the \textbf{PreProcessing1.py} python file.
 
 \newpage
 \begin{thebibliography}{}
- \bibitem{ggplot}
+ \bibitem{yelp}
+ ggplot Library is used in this assignment to plot most of the graphs in this assgnment \url{http://ggplot2.org/}. 
+ 
+ \bibitem{yelp_dataset_challenge}
  ggplot Library is used in this assignment to plot most of the graphs in this assgnment \url{http://ggplot2.org/}. 
   
- \bibitem{latex_template}
- Latex Template used for doing this assignment was taken from latextemplates.com \url{http://www.latextemplates.com/template/short-sectioned-assignment}. 
- 
- \bibitem{knncat} 
- knncat classifier was used to guage the preformance of our own KNN Implementaion.
- \url{https://cran.r-project.org/web/packages/knncat/index.html}
- 
- \bibitem{class}
-class package package provided another off the self KNN classifier implementation
-\url{https://cran.r-project.org/web/packages/class/index.html} 
- 
- \bibitem{rstudio}
- The R code was run and the code output generated on RStudio Studio(Free edition) \url{https://www.rstudio.com/products/rstudio/download3/#download}.
 \end{thebibliography}
 
 
