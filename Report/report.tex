@@ -197,26 +197,26 @@ The given datasets were first converted and exported into csv formats using a si
 \section{Program Description}
 The code has been broken down into the following parts:
 
-\begin{itemize}
-\item	Pre-Processing 1\\
+\begin{enumerate}
+\item \textbf{Pre-Processing 1}\\
 In pre-processing 1, Yelp provided JSON files were converted into the CSV format. The required CSV files were loaded as Python data-frames and then merged, filtered and stored locally for later usage.
 
-\item	Pre-Processing 2\\
+\item \textbf{Pre-Processing 2}\\
 In pre-processing 2, the review text is cleaned up, grouped and stored according to the rating of the reviews, which further gets partitioned into training and testing dataset.
 
-\item	Models\\
+\item	\textbf{Models}\\
 We implemented a total of 8 models and each model has been separated into a different python file. Following are the models which were implemented and compared:
 \begin{itemize}
-\item Baseline model
-\item TFIDF model
-\item Bag of words model
-\item Bigram model
-\item Trigram model
-\item Bi and Tri-gram model
-\item LDA Model
-\item LDA + Sentiment layer model
+\item \textbf{Baseline model}
+\item \textbf{TFIDF model}
+\item \textbf{Bag of words model}
+\item \textbf{Bigram model}
+\item \textbf{Trigram model}
+\item \textbf{Bi and Tri-gram model}
+\item \textbf{LDA Model}
+\item \textbf{LDA + Sentiment layer model}
 \end{itemize}
-\end{itemize}
+\end{enumerate}
 
 \section{Coding Contribution}
 \subsection{Data Transformation \ Pre-Processing}
