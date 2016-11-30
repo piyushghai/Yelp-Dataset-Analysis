@@ -268,6 +268,127 @@ Parameters:
 In this model, sentiment of the review was fed in as the feature alongside the topic distribution of the review. The sentiment of the review was extracted using the Naïve Bayes classifier. 
 \end{enumerate}
 
+\section{Model Evaluation}
+\begin{table}[!htb]
+ \centering
+ \caption{Baseline model performance metrics}
+ \label{baseline_performance}
+ \begin{tabular}{l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.273578\\
+    F1 score & 0.117535\\
+    Precision & 0.074845\\
+    Recall &0.273578\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{table}[!htb]
+ \centering
+ \caption{TFIDF model performance metrics}
+ \label{tfidf_performance}
+ \begin{tabular}{l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Metric & Logistic Regression & Multinomial Naive Bayes\\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.640334	& 0.553686\\
+    F1 score & 0.640334	& 0.553686\\
+    Precision & 0.618353 & 0.507628\\
+    recall & 0.640334 & 0.553686\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{table}[!htb]
+ \centering
+ \caption{Bag of words model performance metrics}
+ \label{bow_performance}
+ \begin{tabular}{l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.630097\\
+    F1 score & 0.624512\\
+    Precision & 0.621452\\
+    recall & 0.630097\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{table}[!htb]
+ \centering
+ \caption{Bigram model performance metrics}
+ \label{bigram_performance}
+ \begin{tabular}{l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.63593\\
+    F1 score & 0.61031\\
+    Precision & 0.61305\\
+    recall & 0.63593\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{table}[!htb]
+ \centering
+ \caption{Trigram model performance metrics}
+ \label{trigram_performance}
+ \begin{tabular}{l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.611375\\
+    F1 score & 0.573271\\
+    Precision & 0.581688\\
+    recall & 0.611375\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{table}[!htb]
+ \centering
+ \caption{Bi and Tri-gram model performance metrics}
+ \label{bow_performance}
+ \begin{tabular}{l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.614550\\
+    F1 score & 0.573366\\
+    Precision & 0.584915\\
+    recall & 0.614550\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+\begin{table}[!htb]
+ \centering
+ \caption{LDA model performance metrics}
+ \label{bow_performance}
+ \begin{tabular}{l l l l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Metric & AdaBoost & Logistic Regression & \multicolumn{1}{p{3cm}}{Multinomial Naive Bayes} & Random Forest\\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.486046	&0.482509	&0.447089	&0.468679\\
+    F1 score & 0.418104	&0.408028	&0.276263	&0.420345\\
+    Precision & 	0.42255	&0.399447	&0.199888	&0.409459\\
+    recall & 	0.486046	&0.482509	&0.447089	&0.468679\\
+    \noalign{\smallskip}\hline
+  \end{tabular}
+\end{table}  
+
+\begin{table}[!htb]
+ \centering
+ \caption{LDA + Sentiment model performance metrics}
+ \label{lda_sentiment_performance}
+ \begin{tabular}{l l l l l} 
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Metric & AdaBoost & Logistic Regression & \multicolumn{1}{p{3cm}}{Multinomial Naive Bayes}& Random Forest\\
+    \noalign{\smallskip}\hline\noalign{\smallskip}
+    Accuracy & 0.556981	&0.556569	&0.447352	&0.544579\\
+    F1 score & 0.51275 &0.500961	&0.276845	&0.513781\\
+    Precision & 0.519836 &0.516783	&0.281885 &0.511234\\
+    recall & 0.486046	&0.482509	&0.447089	&0.407346\\
+    \noalign{\smallskip}\hline
+  \end{tabular} 
+\end{table}  
+
+
+
 \section{Coding Contribution}
 \subsection{Data Transformation \ Pre-Processing}
 Since the files were in JSON format, they were first converted to CSV format. After converting to CSV format. After converting to CSV format, the business and review data frames were joined on \textit{business\_id} for restaurant establishments. From the combined dataset, we got over 1.6M reviews for restaurants alone. The dataset now consisted of just two columns : \textit{Review Text} \& \textit{Star Rating}. \\
