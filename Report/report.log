@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 20:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.5.22)  30 NOV 2016 20:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -527,39 +527,39 @@ File: 1_star_wordcloud_500k.png Graphic file (type png)
 
 <use 1_star_wordcloud_500k.png>
 Package pdftex.def Info: 1_star_wordcloud_500k.png used on input line 280.
-(pdftex.def)             Requested size: 250.92708pt x 200.7446pt.
+(pdftex.def)             Requested size: 301.12427pt x 301.12427pt.
 
 <2_star_wordcloud_500k.png, id=26, 963.6pt x 963.6pt>
 File: 2_star_wordcloud_500k.png Graphic file (type png)
 
 <use 2_star_wordcloud_500k.png>
 Package pdftex.def Info: 2_star_wordcloud_500k.png used on input line 287.
-(pdftex.def)             Requested size: 250.92708pt x 200.7446pt.
+(pdftex.def)             Requested size: 301.12427pt x 301.12427pt.
 
 <3_star_wordcloud_500k.png, id=27, 963.6pt x 963.6pt>
 File: 3_star_wordcloud_500k.png Graphic file (type png)
 
 <use 3_star_wordcloud_500k.png>
 Package pdftex.def Info: 3_star_wordcloud_500k.png used on input line 294.
-(pdftex.def)             Requested size: 250.92708pt x 200.7446pt.
+(pdftex.def)             Requested size: 301.12427pt x 301.12427pt.
 
 <4_star_wordcloud_500k.png, id=28, 963.6pt x 963.6pt>
 File: 4_star_wordcloud_500k.png Graphic file (type png)
 
 <use 4_star_wordcloud_500k.png>
 Package pdftex.def Info: 4_star_wordcloud_500k.png used on input line 301.
-(pdftex.def)             Requested size: 250.92708pt x 200.7446pt.
+(pdftex.def)             Requested size: 301.12427pt x 301.12427pt.
 
 <5_star_wordcloud_500k.png, id=29, 963.6pt x 963.6pt>
 File: 5_star_wordcloud_500k.png Graphic file (type png)
 
 <use 5_star_wordcloud_500k.png>
 Package pdftex.def Info: 5_star_wordcloud_500k.png used on input line 308.
-(pdftex.def)             Requested size: 250.92708pt x 200.7446pt.
+(pdftex.def)             Requested size: 301.12427pt x 301.12427pt.
  [3] [4 <./category_reviews.png>] [5 <./avg_count.png> <./len_count.png> <./sta
 r_review_count.png>] [6 <./1_star_wordcloud_500k.png> <./2_star_wordcloud_500k.
-png> <./3_star_wordcloud_500k.png>] [7 <./4_star_wordcloud_500k.png> <./5_star_
-wordcloud_500k.png>]
+png>] [7 <./3_star_wordcloud_500k.png> <./4_star_wordcloud_500k.png>] [8 <./5_s
+tar_wordcloud_500k.png>]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 327.
 
 
@@ -569,14 +569,14 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 327.
 
-<Models.png, id=55, 585.18625pt x 395.4775pt>
+<Models.png, id=58, 585.18625pt x 395.4775pt>
 File: Models.png Graphic file (type png)
  <use Models.png>
 Package pdftex.def Info: Models.png used on input line 343.
 (pdftex.def)             Requested size: 401.51985pt x 301.12723pt.
- [8
+ [9
 
-] [9 <./Models.png>]
+] [10 <./Models.png>]
 Underfull \hbox (badness 10000) in paragraph at lines 478--479
 
  []
@@ -601,23 +601,23 @@ Underfull \hbox (badness 10000) in paragraph at lines 512--514
 
  []
 
-[10]
+[11] [12]
 Underfull \hbox (badness 10000) in paragraph at lines 519--520
 
  []
 
-[11]
+
 Underfull \hbox (badness 10000) in paragraph at lines 526--528
 
  []
 
-<DataPreprocessFlow.png, id=70, 267.24844pt x 207.77625pt>
+<DataPreprocessFlow.png, id=73, 267.24844pt x 207.77625pt>
 File: DataPreprocessFlow.png Graphic file (type png)
 
 <use DataPreprocessFlow.png>
 Package pdftex.def Info: DataPreprocessFlow.png used on input line 539.
 (pdftex.def)             Requested size: 301.15533pt x 250.9503pt.
- [12 <./DataPreprocessFlow.png>] [13] [14]
+ [13] [14 <./DataPreprocessFlow.png>] [15]
 
 Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              You've used the KOMA-Script implementation of \@ssect
@@ -626,11 +626,11 @@ Class scrartcl Warning: incompatible usage of \@ssect detected.
 (scrartcl)              This could result in several error messages on input li
 ne 604.
 
-[15] (./report.aux) ) 
+[16] (./report.aux) ) 
 Here is how much of TeX's memory you used:
  7710 strings out of 493014
  116668 string characters out of 6133351
- 444778 words of memory out of 5000000
+ 444779 words of memory out of 5000000
  11102 multiletter control sequences out of 15000+600000
  22029 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -648,10 +648,10 @@ pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfrm2074.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
 </usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfti1440.pfb></
 usr/local/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (15 pages, 1340204 bytes).
+Output written on report.pdf (16 pages, 1339737 bytes).
 PDF statistics:
- 125 PDF objects out of 1000 (max. 8388607)
- 73 compressed objects within 1 object stream
+ 128 PDF objects out of 1000 (max. 8388607)
+ 75 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

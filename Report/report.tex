@@ -277,35 +277,35 @@ EDH & 30003 \\
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=250px, height = 200px]{1_star_wordcloud_500k.png}
+\includegraphics[width=300px, height = 300px]{1_star_wordcloud_500k.png}
 \caption{Word Cloud for 1 star rating reviews}
 \label{wc1}
 \end{figure} 
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=250px, height = 200px]{2_star_wordcloud_500k.png}
+\includegraphics[width=300px, height = 300px]{2_star_wordcloud_500k.png}
 \caption{Word Cloud for 2 star rating reviews}
 \label{wc2}
 \end{figure} 
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=250px, height = 200px]{3_star_wordcloud_500k.png}
+\includegraphics[width=300px, height = 300px]{3_star_wordcloud_500k.png}
 \caption{Word Cloud for 3 star rating reviews}
 \label{wc3}
 \end{figure} 
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=250px, height = 200px]{4_star_wordcloud_500k.png}
+\includegraphics[width=300px, height = 300px]{4_star_wordcloud_500k.png}
 \caption{Word Cloud for 4 star rating reviews}
 \label{wc4}
 \end{figure} 
 
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=250px, height = 200px]{5_star_wordcloud_500k.png}
+\includegraphics[width=300px, height = 300px]{5_star_wordcloud_500k.png}
 \caption{Word Cloud for 5 star rating reviews}
 \label{wc5}
 \end{figure} 
@@ -362,7 +362,7 @@ In the Bigram model, the review text is broken down into bigrams - set of two wo
 \item \textbf{Trigam model}\\
 In the Trigram model, the review text is broken down into trigrams - set of three words occurring consecutively. The term frequency vectors of these sets become the features of the review text where each dimension represents the count of the trigram in the review text.
 
-\item Bi and Tri-gram model\\
+\item \textbf{Bi and Tri-gram model}\\
 In the Bi and Tri-gram mode, the review text is broken down into both bi and tri-grams. The term frequency vectors of these sets become the features of a review text where each dimension represents the count of the bigram or trigram in the review text.
 
 \item \textbf{LDA model}\\
@@ -381,7 +381,7 @@ Parameters:
 \end{itemize}
 
 \item \textbf{LDA model + Sentiment Layer}
-In this model, sentiment of the review was fed in as the feature alongside the topic distribution of the review. The sentiment of the review was extracted using the Naïve Bayes classifier. 
+In this model, sentiment of the review was fed in as the feature alongside the topic distribution of the review. The sentiment of the review was extracted using the Naive Bayes classifier. 
 \end{enumerate}
 
 \section{Model Evaluation}
@@ -412,7 +412,7 @@ We can see in the above table that the Baseline model, which predicts every revi
     Accuracy & 0.640334	& 0.553686\\
     F1 score & 0.640334	& 0.553686\\
     Precision & 0.618353 & 0.507628\\
-    recall & 0.640334 & 0.553686\\
+    Recall & 0.640334 & 0.553686\\
     \noalign{\smallskip}\hline
   \end{tabular} 
 \end{table}  
@@ -428,7 +428,7 @@ In the TF-IDF model, we tried two classification models - Logistic Regresion and
     Accuracy & 0.630097\\
     F1 score & 0.624512\\
     Precision & 0.621452\\
-    recall & 0.630097\\
+    Recall & 0.630097\\
     \noalign{\smallskip}\hline
   \end{tabular} 
 \end{table}  
@@ -442,7 +442,7 @@ In the TF-IDF model, we tried two classification models - Logistic Regresion and
     Accuracy & 0.63593\\
     F1 score & 0.61031\\
     Precision & 0.61305\\
-    recall & 0.63593\\
+    Recall & 0.63593\\
     \noalign{\smallskip}\hline
   \end{tabular} 
 \end{table}  
@@ -456,7 +456,7 @@ In the TF-IDF model, we tried two classification models - Logistic Regresion and
     Accuracy & 0.611375\\
     F1 score & 0.573271\\
     Precision & 0.581688\\
-    recall & 0.611375\\
+    Recall & 0.611375\\
     \noalign{\smallskip}\hline
   \end{tabular} 
 \end{table}  
@@ -470,7 +470,7 @@ In the TF-IDF model, we tried two classification models - Logistic Regresion and
     Accuracy & 0.614550\\
     F1 score & 0.573366\\
     Precision & 0.584915\\
-    recall & 0.614550\\
+    Recall & 0.614550\\
     \noalign{\smallskip}\hline
   \end{tabular} 
 \end{table}  
@@ -488,7 +488,7 @@ The bag of words, bigram, trigram and bi \& tri-gram models were built using Mul
     Accuracy & 0.486046	&0.482509	&0.447089	&0.468679\\
     F1 score & 0.418104	&0.408028	&0.276263	&0.420345\\
     Precision & 	0.42255	&0.399447	&0.199888	&0.409459\\
-    recall & 	0.486046	&0.482509	&0.447089	&0.468679\\
+    Recall & 	0.486046	&0.482509	&0.447089	&0.468679\\
     \noalign{\smallskip}\hline
   \end{tabular}
 \end{table}  
@@ -504,15 +504,15 @@ The bag of words, bigram, trigram and bi \& tri-gram models were built using Mul
     Accuracy & 0.556981	&0.556569	&0.447352	&0.544579\\
     F1 score & 0.51275 &0.500961	&0.276845	&0.513781\\
     Precision & 0.519836 &0.516783	&0.281885 &0.511234\\
-    recall & 0.486046	&0.482509	&0.447089	&0.407346\\
+    Recall & 0.486046	&0.482509	&0.447089	&0.407346\\
     \noalign{\smallskip}\hline
   \end{tabular} 
 \end{table}  
 
-The LDA model didn't perform as well as our expectation to predict the rating from the review text. From Table \ref{lda_performance} we can see that using the topics extracted using LDA as features only leads to a best accuracy of 48.6\%. We attributed this poor performance to the fact that the topics extracted do not have any sentiment associated with them. So, in our next model, we added a sentiment layer as an additional feature to the model. The sentiment of the reviews was extracted using the Naive Bayes classifier. As the Table \ref{lda_sentiment_performance} indicates, the LDA + Sentiment model performs much better than the LDA model and we achieve a best accuracy of 55.6%.\\
+The LDA model didn't perform as well as our expectation to predict the rating from the review text. From Table \ref{lda_performance} we can see that using the topics extracted using LDA as features only leads to a best accuracy of 48.6\%. We attributed this poor performance to the fact that the topics extracted do not have any sentiment associated with them. So, in our next model, we added a sentiment layer as an additional feature to the model. The sentiment of the reviews was extracted using the Naive Bayes classifier. As the Table \ref{lda_sentiment_performance} indicates, the LDA + Sentiment model performs much better than the LDA model and we achieve a best accuracy of 55.6\%.
 \\
 
-Multiple classifiers were tested for the LDA model, such as - Adaboost, Logistic Regression, Multinomial Naive Bayes and Random Forest. We observed that the Adaboost classifier gives the best accuracy and it is closely followed by Logistic Regression classifier.
+Multiple classifiers were tested for the LDA model, such as - Adaboost, Logistic Regression, Multinomial Naive Bayes and Random Forest. We observed that the Adaboost classifier gives the best accuracy and it is closely followed by Logistic Regression classifier.\newpage
 
 \section{Coding Contribution}
 \subsection{Data Transformation \ Pre-Processing}
