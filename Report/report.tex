@@ -417,6 +417,8 @@ We can see in the above table that the Baseline model, which predicts every revi
   \end{tabular} 
 \end{table}  
 
+In the TF-IDF model, we tried two classification models - Logistic Regresion and Multinomial Naive Bayes. From the above results, we can see that Logistic Regression outperforms Multinomial Naive Bayes in terms of all metrics. The best accuracy obtained using this model is 64\%.	
+
 \begin{table}[!htb]
  \centering
  \caption{Bag of words model performance metrics}
@@ -462,7 +464,7 @@ We can see in the above table that the Baseline model, which predicts every revi
 \begin{table}[!htb]
  \centering
  \caption{Bi and Tri-gram model performance metrics}
- \label{bow_performance}
+ \label{biandtri_performance}
  \begin{tabular}{l l l} 
     \noalign{\smallskip}\hline\noalign{\smallskip}
     Accuracy & 0.614550\\
@@ -473,10 +475,12 @@ We can see in the above table that the Baseline model, which predicts every revi
   \end{tabular} 
 \end{table}  
 
+The bag of words, bigram, trigram and bi \& tri-gram models were built using Multinomial Naive Bayes classifier and comparing their performance from Table \ref{bow_performance}, \ref{bigram_performance}, \ref{trigram_performance} and \ref{biandtri_performance}, we can see that bigram model has the best accuracy out of the 4 models, which is at 63.59 \%.\\\\
+
 \begin{table}[!htb]
  \centering
  \caption{LDA model performance metrics}
- \label{bow_performance}
+ \label{lda_performance}
  \begin{tabular}{l l l l l l} 
     \noalign{\smallskip}\hline\noalign{\smallskip}
     Metric & AdaBoost & Logistic Regression & \multicolumn{1}{p{3cm}}{Multinomial Naive Bayes} & Random Forest\\
@@ -504,6 +508,11 @@ We can see in the above table that the Baseline model, which predicts every revi
     \noalign{\smallskip}\hline
   \end{tabular} 
 \end{table}  
+
+The LDA model didn't perform as well as our expectation to predict the rating from the review text. From Table \ref{lda_performance} we can see that using the topics extracted using LDA as features only leads to a best accuracy of 48.6\%. We attributed this poor performance to the fact that the topics extracted do not have any sentiment associated with them. So, in our next model, we added a sentiment layer as an additional feature to the model. The sentiment of the reviews was extracted using the Naive Bayes classifier. As the Table \ref{lda_sentiment_performance} indicates, the LDA + Sentiment model performs much better than the LDA model and we achieve a best accuracy of 55.6%.\\
+\\
+
+Multiple classifiers were tested for the LDA model, such as - Adaboost, Logistic Regression, Multinomial Naive Bayes and Random Forest. We observed that the Adaboost classifier gives the best accuracy and it is closely followed by Logistic Regression classifier.
 
 \section{Coding Contribution}
 \subsection{Data Transformation \ Pre-Processing}
